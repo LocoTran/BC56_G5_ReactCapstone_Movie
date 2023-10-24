@@ -17,6 +17,7 @@ export default function ListMovie({ list }) {
                         <NavLink to={`/detail/${maPhim}`}>
                             <img
                                 alt=""
+                                loading="lazy"
                                 src={hinhAnh}
                                 style={{
                                     height: 300,

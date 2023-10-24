@@ -11,7 +11,7 @@ import { rootReducer } from "./redux/reducer/rootReducer";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
+export const store = createStore(
     rootReducer,
     /* preloadedState, */ composeEnhancers(applyMiddleware(thunk))
 );

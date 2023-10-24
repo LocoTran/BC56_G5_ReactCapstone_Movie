@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ListMovie from "./ListMovie/ListMovie";
 import { movieService } from "../../services/service";
 import playBtn from "./play.png";
+import Theather from "../../components/Theather/Theather";
 
 export default function HomePage() {
     const [list, setList] = useState([]);
@@ -34,6 +35,7 @@ export default function HomePage() {
                 <div key={maPhim} className="relative">
                     <a href={trailer} target="_blank" rel="noopener">
                         <img
+                            loading="lazy"
                             src={playBtn}
                             alt=""
                             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
@@ -49,6 +51,7 @@ export default function HomePage() {
         <div>
             <Carousel autoplay>{renderCarousel()}</Carousel>
             <ListMovie list={list} />
+            <Theather />
         </div>
     );
 }

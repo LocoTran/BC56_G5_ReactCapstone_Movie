@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Form, Input } from "antd";
 import { userService } from "../../services/service";
 import toast from "react-hot-toast";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { SET_INFO } from "../../redux/constant/userConst";
 import bgLogin from "./bgNew.png";
 import Lottie from "lottie-react";
 import loginAnimation from "./loginAnimation.json";
+import { setInfo } from "../../redux/action/userAction";
 
 const LoginPage = () => {
     let navigate = useNavigate();
@@ -18,7 +18,7 @@ const LoginPage = () => {
         userService
             .login(values)
             .then((res) => {
-                dispatch({ type: SET_INFO, payload: res.data.content });
+                dispatch(setInfo(res.data.content));
                 localStorage.setItem("USER", JSON.stringify(res.data.content));
                 toast.success("Đăng nhập thành công!");
                 setTimeout(() => {
