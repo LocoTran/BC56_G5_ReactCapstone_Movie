@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { movieService } from "../../services/service";
 import { ConfigProvider, Tabs } from "antd";
 import moment from "moment/moment";
+import { NavLink } from "react-router-dom";
 const onChange = (key) => {
     console.log(key);
 };
@@ -78,11 +79,14 @@ export default function TheatherDesktop() {
                                 .slice(0, 9)
                                 .map((lichChieu) => {
                                     return (
-                                        <span className="rounded bg-red-500 px-2 py-1 text-white">
+                                        <NavLink
+                                            to={`/detail/${phim.maPhim}`}
+                                            className="rounded bg-red-500 px-2 py-1 text-white"
+                                        >
                                             {moment(
                                                 lichChieu.ngayChieuGioChieu
                                             ).format("DD/MM/YY - hh:mm")}
-                                        </span>
+                                        </NavLink>
                                     );
                                 })}
                         </div>

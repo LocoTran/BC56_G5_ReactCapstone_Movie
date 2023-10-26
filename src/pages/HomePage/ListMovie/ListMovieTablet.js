@@ -24,7 +24,6 @@ export default function ListMovieTablet() {
                 <Card
                     key={maPhim}
                     hoverable
-                    style={{}}
                     cover={
                         <NavLink to={`/detail/${maPhim}`}>
                             <img

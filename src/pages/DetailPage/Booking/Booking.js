@@ -1,9 +1,8 @@
 import React from "react";
-import DetailDesktop from "./DetailDesktop";
-import DetailTable from "./DetailTable";
-import DetailMobile from "./DetailMobile";
-import Booking from "./Booking/Booking";
 import { useMediaQuery } from "react-responsive";
+import BookingDesktop from "./BookingDesktop";
+import BookingTablet from "./BookingTablet";
+import BookingMobile from "./BookingMobile";
 
 const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
@@ -18,19 +17,18 @@ const Mobile = ({ children }) => {
     return isMobile ? children : null;
 };
 
-export default function DetailPage() {
+export default function Booking() {
     return (
         <div>
             <Desktop>
-                <DetailDesktop />
+                <BookingDesktop />
             </Desktop>
             <Tablet>
-                <DetailTable />
+                <BookingTablet />
             </Tablet>
             <Mobile>
-                <DetailMobile />
+                <BookingMobile />
             </Mobile>
-            <Booking />
         </div>
     );
 }
