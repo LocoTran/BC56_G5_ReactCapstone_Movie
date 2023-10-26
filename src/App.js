@@ -5,8 +5,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import { Toaster } from "react-hot-toast";
 import Register from "./pages/Register/Register";
 import DetailPage from "./pages/DetailPage/DetailPage";
-import OnlyHeader from "./layout/OnlyHeader";
-import HeadFoot from "./layout/HeadFoot";
+import HeadLayout from "./layout/HeadLayout";
+import HeadFootLayout from "./layout/HeadFootLayout";
 import Spinner from "./components/Spinner/Spinner";
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
                 <Toaster />
                 <Spinner />
                 <Routes>
-                    <Route path="/" element={<HeadFoot />}>
+                    <Route path="/" element={<HeadFootLayout />}>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/detail/:id" element={<DetailPage />} />
                     </Route>
-                    <Route path="/" element={<OnlyHeader />}>
+                    <Route path="/" element={<HeadLayout />}>
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<Register />} />
                     </Route>

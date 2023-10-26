@@ -1,6 +1,7 @@
-import { setInfo } from "../action/userAction";
+import { SET_INFO } from "../constant/userConst";
 
 let user = JSON.parse(localStorage.getItem("USER"));
+console.log("🚀👾👽 ~ user:", user);
 
 const initialState = {
     info: user,
@@ -8,7 +9,7 @@ const initialState = {
 
 export let userReducer = (state = initialState, { type, payload }) => {
     switch (type) {
-        case setInfo: {
+        case SET_INFO: {
             return { ...state, info: payload };
         }
         default:

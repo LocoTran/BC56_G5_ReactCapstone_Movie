@@ -14,7 +14,6 @@ const LoginPage = () => {
     let dispatch = useDispatch();
 
     const onFinish = (values) => {
-        console.log("Success:", values);
         userService
             .login(values)
             .then((res) => {

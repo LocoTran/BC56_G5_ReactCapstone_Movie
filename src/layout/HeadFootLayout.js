@@ -3,7 +3,7 @@ import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
 
-export default function HeadFoot({ children }) {
+export default function HeadFootLayout({ children }) {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />

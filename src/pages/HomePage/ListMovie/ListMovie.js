@@ -1,51 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import ListMovieDesktop from "./ListMovieDesktop";
+import ListMovieTablet from "./ListMovieTablet";
+import ListMovieMobile from "./ListMovieMobile";
+import { movieService } from "../../../services/service";
 import { Card, Rate } from "antd";
-import Meta from "antd/es/card/Meta";
 import { NavLink } from "react-router-dom";
+import Meta from "antd/es/card/Meta";
 
-export default function ListMovie({ list }) {
-    let renderList = () => {
-        return list.map(({ hinhAnh, maPhim, tenPhim, danhGia }) => {
-            return (
-                <Card
-                    key={maPhim}
-                    hoverable
-                    style={{
-                        width: 240,
-                    }}
-                    cover={
-                        <NavLink to={`/detail/${maPhim}`}>
-                            <img
-                                alt=""
-                                loading="lazy"
-                                src={hinhAnh}
-                                style={{
-                                    height: 300,
-                                    width: "100%",
-                                    objectFit: "cover",
-                                }}
-                            />
-                        </NavLink>
-                    }
-                >
-                    <NavLink to={`/detail/${maPhim}`}>
-                        <Meta title={tenPhim} />
-                    </NavLink>
-                    <Rate disabled value={danhGia / 2} className="mt-2" />
-                    <NavLink
-                        className="mt-2 inline-block btn-theme-red px-2"
-                        to={`/detail/${maPhim}`}
-                    >
-                        Xem ngay
-                    </NavLink>
-                </Card>
-            );
-        });
-    };
+const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    return isDesktop ? children : null;
+};
+const Tablet = ({ children }) => {
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    return isTablet ? children : null;
+};
+const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    return isMobile ? children : null;
+};
 
+export default function ListMovie() {
     return (
-        <div className="container grid grid-cols-4 gap-6 py-5">
-            {renderList()}
+        <div>
+            <Desktop>
+                <ListMovieDesktop />
+            </Desktop>
+            <Tablet>
+                <ListMovieTablet />
+            </Tablet>
+            <Mobile>
+                <ListMovieMobile />
+            </Mobile>
         </div>
     );
 }

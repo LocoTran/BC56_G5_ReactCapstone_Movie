@@ -1,45 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { movieService } from "../../services/service";
-import { Rate } from "antd";
+import React from "react";
+import { useMediaQuery } from "react-responsive";
+import DetailDesktop from "./DetailDesktop";
+import DetailTable from "./DetailTable";
+import DetailMobile from "./DetailMobile";
+
+const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    return isDesktop ? children : null;
+};
+const Tablet = ({ children }) => {
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    return isTablet ? children : null;
+};
+const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    return isMobile ? children : null;
+};
 
 export default function DetailPage() {
-    let { id } = useParams();
-    const [detail, setDetail] = useState({});
-
-    useEffect(() => {
-        movieService
-            .getDetail(id)
-            .then((res) => {
-                setDetail(res.data.content);
-            })
-            .catch((err) => {
-                console.log("🚀👾👽 ~ err:", err);
-            });
-    }, []);
-
     return (
-        <div className="">
-            <div className="container p-20 bg-orange-200">
-                <div className="bg-white rounded-lg shadow-2xl md:flex">
-                    <img
-                        alt=""
-                        src={detail.hinhAnh}
-                        className="md:w-1/3 rounded-lg md:rounded-r-none md:rounded-l-lg h-96 object-cover shrink-0"
-                    />
-                    <div className="p-6">
-                        <h2 className="font-bold text-xl md:text-3xl mb-2 text-orange-700">
-                            {detail.tenPhim}
-                        </h2>
-                        <p className="text-orange-700">{detail.moTa}</p>
-                        <Rate
-                            disabled
-                            value={detail.danhGia / 2}
-                            className="mt-2"
-                        />
-                    </div>
-                </div>
-            </div>
+        <div>
+            <Desktop>
+                <DetailDesktop />
+            </Desktop>
+            <Tablet>
+                <DetailTable />
+            </Tablet>
+            <Mobile>
+                <DetailMobile />
+            </Mobile>
         </div>
     );
 }
