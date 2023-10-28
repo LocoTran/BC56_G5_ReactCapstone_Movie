@@ -24,4 +24,33 @@ export let adminService = {
   getUserList: () => {
     return https.get("/api/QuanLyNguoiDung/LayDanhSachNguoiDung");
   },
+  layDanhSachBanner: () => {
+    return https.get(`QuanLyPhim/LayDanhSachBanner`);
+  },
+
+  // layDanhSachPhim: (tenPhim = "") => {
+  layDanhSachPhim: (id) => {
+    // if (tenPhim.trim() !== "") {
+    //   return https.get(
+    //     `QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`
+    //   );
+    // }
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  },
+
+  themPhimUploadHinh: (formData) => {
+    return https.post(`QuanLyPhim/ThemPhimUploadHinh`, formData);
+  },
+
+  layThongTinPhimEdit: (maPhim) => {
+    return https.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
+  },
+
+  capNhatPhimUpload: (formData) => {
+    return https.post(`QuanLyPhim/CapNhatPhimUpload`, formData);
+  },
+
+  xoaPhim: (maPhim) => {
+    return https.delete(`QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
+  },
 };

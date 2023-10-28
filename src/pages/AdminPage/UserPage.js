@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Table, Tag, Button } from "antd";
 import { adminService } from "../../services/service";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { NavLink } from "react-router-dom";
+import { Fragment } from "react";
+
 export default function UserPage() {
   const [userArr, setUserArr] = useState([]);
-  //   gọi api lấy danh sách người dùng
   useEffect(() => {
-    // antd table ( dùng table đầu tiên)
     adminService
       .getUserList()
       .then((res) => {
@@ -20,30 +22,66 @@ export default function UserPage() {
 
   const columns = [
     {
-      title: "Name",
+      title: "Họ tên",
       dataIndex: "hoTen",
       key: "hoTen",
-    },
-    {
-      title: "Gmail",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "User Type",
-      dataIndex: "maLoaiNguoiDung",
-      render: (text) => {
-        if (text == "KhachHang") return <Tag color="green">Khách Hàng</Tag>;
-        else return <Tag color="red">Quản Trị</Tag>;
+      sorter: (a, b) => {
+        let hoTenA = a.hoTen.toLowerCase().trim();
+        let hoTenB = b.hoTen.toLowerCase().trim();
+        if (hoTenA > hoTenB) {
+          return 1;
+        }
+        return -1;
       },
-      key: "maLoaiNguoiDung",
+      sortDirections: ["descend", "ascend"],
+      width: "20%",
     },
     {
-      title: "Action",
-      dataIndex: "action",
+      title: "Tài Khoản",
+      dataIndex: "taiKhoan",
+      width: "15%",
+    },
+    {
+      title: "Mật khẩu",
+      dataIndex: "matKhau",
+      sortDirections: ["descend", "ascend"],
+      width: "15%",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      sortDirections: ["descend", "ascend"],
+      width: "5%",
+    },
+    {
+      title: "Số điện thoại",
+      dataIndex: "soDT",
+      sortDirections: ["descend", "ascend"],
+      width: "10%",
+    },
+    {
+      title: "Loại người dùng",
+      dataIndex: "maLoaiNguoiDung",
+      sortDirections: ["descend", "ascend"],
+      width: "15%",
+    },
+    {
+      title: "Hành động",
+      dataIndex: "stt",
+      sortDirections: ["descend", "ascend"],
       key: "action",
+      width: "15%",
       render: () => {
-        return <Button danger>Delete</Button>;
+        return (
+          <Fragment>
+            <NavLink key={1} className=" mr-2  text-2xl">
+              <EditOutlined style={{ color: "blue" }} />{" "}
+            </NavLink>
+            <span style={{ cursor: "pointer" }} key={2} className="text-2xl">
+              <DeleteOutlined style={{ color: "red" }} />
+            </span>
+          </Fragment>
+        );
       },
     },
   ];

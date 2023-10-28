@@ -10,6 +10,7 @@ import HeadFoot from "./layout/HeadFoot";
 import Spinner from "./components/Spinner/Spinner";
 import AdminPage from "./pages/AdminPage/AdminPage";
 import UserPage from "./pages/AdminPage/UserPage";
+import Films from "./pages/AdminPage/Edit/Films";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path="/admin" element={<AdminPage />}>
             <Route path="users" element={<UserPage />}></Route>
+            <Route path="films" element={<Films />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { FileOutlined, HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Breadcrumb, Layout, Menu, theme } from "antd";
 import SubMenu from "antd/es/menu/SubMenu";
 import { NavLink, Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
@@ -19,36 +19,32 @@ const AdminPage = () => {
     window.location.href = "/";
   }
   return (
-    <Layout hasSider>
-      <Sider
-        style={{
-          overflow: "auto",
-          height: "100vh",
-          position: "fixed",
-          left: 0,
-          top: 0,
-          bottom: 0,
-        }}
-      >
-        <div className="demo-logo-vertical" />
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider>
+        <div className="logo p-5">
+          <img
+            src="https:cyberlearn.vn/wp-content/uploads/2020/03/cyberlearn-min-new-opt2.png"
+            alt="..."
+          />
+        </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <SubMenu icon={<UserOutlined />} title="Users">
-            <Menu.Item icon={<UserOutlined />}>
+          <SubMenu key="sub1" icon={<UserOutlined />} title="Users">
+            <Menu.Item key="8" icon={<UserOutlined />}>
               <NavLink to="/admin/users">Users</NavLink>
             </Menu.Item>
-            <Menu.Item icon={<FileOutlined />}>
+            <Menu.Item key="9" icon={<FileOutlined />}>
               <NavLink to="/admin/users/adduser">Add user</NavLink>
             </Menu.Item>
           </SubMenu>
-          <SubMenu icon={<FileOutlined />} title="Films">
-            <Menu.Item icon={<FileOutlined />}>
+          <SubMenu key="sub2" icon={<FileOutlined />} title="Films">
+            <Menu.Item key="10" icon={<FileOutlined />}>
               <NavLink to="/admin/films">Films</NavLink>
             </Menu.Item>
-            <Menu.Item icon={<FileOutlined />}>
+            <Menu.Item key="11" icon={<FileOutlined />}>
               <NavLink to="/admin/films/addnew">Add new</NavLink>
             </Menu.Item>
           </SubMenu>
-          <Menu.Item icon={<HomeOutlined />}>
+          <Menu.Item key="99" icon={<HomeOutlined />}>
             <NavLink to="/">Back to home</NavLink>
           </Menu.Item>
         </Menu>
@@ -56,13 +52,13 @@ const AdminPage = () => {
       <Layout
         className="site-layout"
         style={{
-          marginLeft: 200,
+          padding: 0,
         }}
       >
-        <Header />
+        <Header className="" style={{ padding: 0 }}></Header>
         <Content
           style={{
-            margin: "24px 16px 0",
+            margin: " 16px 0",
             overflow: "initial",
           }}
         >
