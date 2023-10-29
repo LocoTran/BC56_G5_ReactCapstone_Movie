@@ -27,10 +27,13 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
           </Route>
+          {/* admin */}
+          {/*  */}
           <Route path="/admin" element={<AdminPage />}>
             <Route path="users" element={<UserPage />}></Route>
             <Route path="films" element={<Films />}></Route>
           </Route>
+          {/*  */}
         </Routes>
       </BrowserRouter>
     </div>
