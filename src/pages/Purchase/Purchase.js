@@ -1,8 +1,8 @@
-import ListMovieDesktop from "./ListMovieDesktop";
-import ListMovieTablet from "./ListMovieTablet";
-import ListMovieMobile from "./ListMovieMobile";
 import React from "react";
 import { useMediaQuery } from "react-responsive";
+import PurchaseDesktop from "./PurchaseDesktop";
+import PurchaseTablet from "./PurchaseTablet";
+import PurchaseMobile from "./PurchaseMobile";
 
 const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
@@ -17,17 +17,17 @@ const Mobile = ({ children }) => {
     return isMobile ? children : null;
 };
 
-export default function ListMovie() {
+export default function Purchase() {
     return (
         <div>
             <Desktop>
-                <ListMovieDesktop />
+                <PurchaseDesktop />
             </Desktop>
             <Tablet>
-                <ListMovieTablet />
+                <PurchaseTablet />
             </Tablet>
             <Mobile>
-                <ListMovieMobile />
+                <PurchaseMobile />
             </Mobile>
         </div>
     );

@@ -11,12 +11,22 @@ export let userService = {
 
 export let movieService = {
     getList: () => {
-        return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP14");
+        return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
     },
     getDetail: (id) => {
         return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
     },
     getMovieByTheather: () => {
         return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
+    },
+    getDetailBooking: (id) => {
+        return https.get(
+            `/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+        );
+    },
+    getToPurchase: (idBooking) => {
+        return https.get(
+            `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+        );
     },
 };

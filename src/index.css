@@ -31,3 +31,11 @@ html {
 .login-content {
     height: calc(100vh - 80px);
 }
+
+.gheThuong {
+    @apply bg-gray-300 h-8 w-8 leading-8 text-center rounded-md;
+}
+
+.gheVip {
+    @apply bg-orange-400 h-8 w-8 leading-8 text-center rounded-md;
+}

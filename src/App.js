@@ -8,6 +8,7 @@ import DetailPage from "./pages/DetailPage/DetailPage";
 import HeadLayout from "./layout/HeadLayout";
 import HeadFootLayout from "./layout/HeadFootLayout";
 import Spinner from "./components/Spinner/Spinner";
+import Purchase from "./pages/Purchase/Purchase";
 
 function App() {
     return (
@@ -23,6 +24,10 @@ function App() {
                     <Route path="/" element={<HeadLayout />}>
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<Register />} />
+                        <Route
+                            path="/purchase/:idBooking"
+                            element={<Purchase />}
+                        />
                     </Route>
                 </Routes>
             </BrowserRouter>

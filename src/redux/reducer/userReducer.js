@@ -1,7 +1,6 @@
 import { SET_INFO } from "../constant/userConst";
 
 let user = JSON.parse(localStorage.getItem("USER"));
-console.log("🚀👾👽 ~ user:", user);
 
 const initialState = {
     info: user,

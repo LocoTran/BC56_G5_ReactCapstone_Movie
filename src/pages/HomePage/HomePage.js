@@ -1,8 +1,5 @@
-import { Carousel } from "antd";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ListMovie from "./ListMovie/ListMovie";
-import { movieService } from "../../services/service";
-import playBtn from "./play.png";
 import Theather from "../../components/Theather/Theather";
 import Hero from "./Hero";
 
