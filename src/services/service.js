@@ -29,4 +29,7 @@ export let movieService = {
             `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
         );
     },
+    bookingTicket: (ticket) => {
+        return https.post("/api/QuanLyDatVe/DatVe", ticket);
+    },
 };
