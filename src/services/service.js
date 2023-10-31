@@ -21,8 +21,8 @@ export let movieService = {
   },
 };
 export let adminService = {
-  getUserList: () => {
-    return https.get("/api/QuanLyNguoiDung/LayDanhSachNguoiDung");
+  getUserList: (query = "") => {
+    return https.get(`/api/QuanLyNguoiDung/LayDanhSachNguoiDung${query}`);
   },
   deleteUser: (taiKhoan) => {
     return https.delete(
@@ -37,34 +37,12 @@ export let adminService = {
   updateUser: (payload) => {
     return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
   },
+  addUser: (thongTinNguoiDung) => {
+    // return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
+    return https.post(
+      `
+    /api/QuanLyNguoiDung/ThemNguoiDung`,
+      thongTinNguoiDung
+    );
+  },
 };
-
-// layDanhSachBanner: () => {
-//   return https.get(`QuanLyPhim/LayDanhSachBanner`);
-// },
-
-// // layDanhSachPhim: (tenPhim = "") => {
-// layDanhSachPhim: (id) => {
-//   // if (tenPhim.trim() !== "") {
-//   //   return https.get(
-//   //     `QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}&tenPhim=${tenPhim}`
-//   //   );
-//   // }
-//   return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
-// },
-
-// themPhimUploadHinh: (formData) => {
-//   return https.post(`QuanLyPhim/ThemPhimUploadHinh`, formData);
-// },
-
-// layThongTinPhimEdit: (maPhim) => {
-//   return https.get(`QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
-// },
-
-// capNhatPhimUpload: (formData) => {
-//   return https.post(`QuanLyPhim/CapNhatPhimUpload`, formData);
-// },
-
-// xoaPhim: (maPhim) => {
-//   return https.delete(`QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
-// },

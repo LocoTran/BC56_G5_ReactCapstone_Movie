@@ -1,10 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import { FileOutlined, HomeOutlined, UserOutlined } from "@ant-design/icons";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import { Layout, Menu, theme } from "antd";
 import SubMenu from "antd/es/menu/SubMenu";
 import { NavLink, Outlet } from "react-router-dom";
 import Header from "../../components/Header/Header";
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 const items = [FileOutlined, HomeOutlined, UserOutlined].map((icon, index) => ({
   key: String(index + 1),
   icon: React.createElement(icon),
