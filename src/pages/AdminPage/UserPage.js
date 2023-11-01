@@ -125,7 +125,7 @@ export default function UserPage() {
         dataSource={userArr}
         columns={columns}
         pagination={{
-          total: 100,
+          total: 200,
         }}
       />
       <Modal

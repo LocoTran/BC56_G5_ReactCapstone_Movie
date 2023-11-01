@@ -1,9 +1,9 @@
-import { ArrowLeftOutlined } from "@ant-design/icons";
+// import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useFormik } from "formik";
 import React from "react";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
-import { quanLyNguoiDungAction } from "../../redux/action/themNguoiDung";
+import { themNguoiDung } from "../../redux/action/themNguoiDung";
 
 const AddUser = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const AddUser = () => {
     },
     onSubmit: (values) => {
       console.log("values: ", values);
-      const action = quanLyNguoiDungAction.themNguoiDungAction(values);
+      const action = themNguoiDung.themNguoiDungAction(values);
       dispatch(action);
     },
     validationSchema: Yup.object({
@@ -188,15 +188,15 @@ const AddUser = () => {
             </div>
           </div>
         </div>
-        <div className="flex -mx-3">
+        {/* <div className="flex -mx-3">
           <div className="w-1/2 px-3 mb-5">
             <button className=" w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold flex items-center justify-center">
               <ArrowLeftOutlined className="mr-2" />
               Trở lại
             </button>
           </div>
-        </div>
-        <div className="flex -mx-3">
+        </div> */}
+        {/* <div className="flex -mx-3">
           <div className="w-1/2 px-3 mb-5">
             <button
               type="submit"
@@ -205,6 +205,16 @@ const AddUser = () => {
               Thêm
             </button>
           </div>
+        </div> */}
+      </div>
+      <div className=" -mx-3">
+        <div className=" px-3 mb-5">
+          <button
+            type="submit"
+            className="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-3 font-semibold"
+          >
+            Thêm
+          </button>
         </div>
       </div>
     </form>

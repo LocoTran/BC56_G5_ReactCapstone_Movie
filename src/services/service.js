@@ -38,11 +38,11 @@ export let adminService = {
     return https.post(`/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, payload);
   },
   addUser: (thongTinNguoiDung) => {
-    // return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
-    return https.post(
-      `
-    /api/QuanLyNguoiDung/ThemNguoiDung`,
-      thongTinNguoiDung
-    );
+    return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
+    // return https.post(
+    //   `
+    // /api/QuanLyNguoiDung/ThemNguoiDung`,
+    //   thongTinNguoiDung
+    // );
   },
 };
