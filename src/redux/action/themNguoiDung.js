@@ -8,7 +8,6 @@ export const themNguoiDung = {
         const result = await adminService.addUser(thongTinNguoiDung);
         if (result.data.statusCode === 200) {
           // console.log('result: ', result.data.content);
-          // alert("Thêm người dùng thành công!");
           toast.success("Thêm Người Dùng Thành Công");
         }
       } catch (errors) {

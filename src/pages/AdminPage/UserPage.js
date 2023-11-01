@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Drawer, Form, Input } from "antd";
 import { adminService } from "../../services/service";
-import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import {
+  DeleteOutlined,
+  EditOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
 import toast from "react-hot-toast";
+import Search from "antd/es/input/Search";
 
 export default function UserPage() {
   const [userArr, setUserArr] = useState([]);
@@ -128,6 +133,7 @@ export default function UserPage() {
           total: 200,
         }}
       />
+
       <Modal
         open={isOpenModal}
         onOk={async () => {

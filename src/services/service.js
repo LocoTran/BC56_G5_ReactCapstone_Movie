@@ -39,10 +39,5 @@ export let adminService = {
   },
   addUser: (thongTinNguoiDung) => {
     return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
-    // return https.post(
-    //   `
-    // /api/QuanLyNguoiDung/ThemNguoiDung`,
-    //   thongTinNguoiDung
-    // );
   },
 };
