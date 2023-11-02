@@ -115,6 +115,7 @@ export default function TheatherDesktop() {
                     items={renderHeThongRap()}
                     tabPosition="left"
                     onChange={onChange}
+                    id="theather"
                 />
             </ConfigProvider>
         </div>

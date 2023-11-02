@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { movieService } from "../../services/service";
 import toast from "react-hot-toast";
 
@@ -7,6 +7,8 @@ export default function PurchaseDesktop() {
     const { idBooking } = useParams();
     const [detailRoom, setDetailRoom] = useState({});
     const [selectChair, setSelectChair] = useState([]);
+    const navigate = useNavigate();
+    let userInLocal = JSON.parse(localStorage.getItem("USER"));
 
     let getBookingRoom = () => {
         movieService
@@ -123,16 +125,24 @@ export default function PurchaseDesktop() {
             maLichChieu: idBooking,
             danhSachVe,
         };
-        movieService
-            .bookingTicket(listVe)
-            .then((res) => {
-                setSelectChair([]);
-                toast.success(res.data.content);
-                getBookingRoom();
-            })
-            .catch((err) => {
-                console.log("🚀👾👽 ~ err:", err);
-            });
+
+        if (userInLocal) {
+            movieService
+                .bookingTicket(listVe)
+                .then((res) => {
+                    setSelectChair([]);
+                    toast.success(res.data.content);
+                    getBookingRoom();
+                })
+                .catch((err) => {
+                    console.log("🚀👾👽 ~ err:", err);
+                });
+        } else {
+            toast.error("Bạn chưa đăng nhập. Hãy đăng nhập rồi đặt vé lại");
+            setTimeout(() => {
+                navigate("/login");
+            }, 1000);
+        }
     };
 
     return (

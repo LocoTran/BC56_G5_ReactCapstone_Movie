@@ -55,7 +55,7 @@ export default function ListMovieDesktop() {
     };
 
     return (
-        <div className="container grid grid-cols-4 gap-6 py-5">
+        <div className="container grid grid-cols-4 gap-6 py-5" id="showtimes">
             {renderList()}
         </div>
     );

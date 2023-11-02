@@ -81,7 +81,7 @@ export default function BookingDesktop() {
             >
                 <Tabs
                     style={{
-                        height: 500,
+                        maxHeight: 500,
                     }}
                     className="max-w-full"
                     defaultActiveKey="1"

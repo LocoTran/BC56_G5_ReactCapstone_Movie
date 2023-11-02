@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function HeaderDesktop() {
     let navigate = useNavigate();
@@ -54,6 +54,26 @@ export default function HeaderDesktop() {
                 >
                     CyberCine
                 </span>
+                <div className="flex items-center gap-5">
+                    <a
+                        href="/#theather"
+                        className="hover:text-red-500 cursor-pointer font-semibold"
+                    >
+                        Đặt vé
+                    </a>
+                    <a
+                        href="/#showtimes"
+                        className="hover:text-red-500 cursor-pointer font-semibold"
+                    >
+                        Lịch chiếu
+                    </a>
+                    <a
+                        href="/#footer"
+                        className="hover:text-red-500 cursor-pointer font-semibold"
+                    >
+                        Liên hệ
+                    </a>
+                </div>
                 <nav>{renderNav()}</nav>
             </div>
         </div>

@@ -116,6 +116,7 @@ export default function TheatherMobile() {
                     items={renderHeThongRap()}
                     tabPosition="top"
                     onChange={onChange}
+                    id="theather"
                 />
             </ConfigProvider>
         </div>

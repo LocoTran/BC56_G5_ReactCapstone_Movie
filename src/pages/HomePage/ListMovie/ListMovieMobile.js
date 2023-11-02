@@ -63,7 +63,10 @@ export default function ListMovieMobile() {
     };
 
     return (
-        <div className="container grid grid-cols-1 sm:grid-cols-2 gap-4 py-5">
+        <div
+            className="container grid grid-cols-1 sm:grid-cols-2 gap-4 py-5"
+            id="showtimes"
+        >
             {renderList()}
         </div>
     );

@@ -54,7 +54,7 @@ export default function ListMovieTablet() {
         });
     };
     return (
-        <div className="container grid grid-cols-3 gap-6 py-5">
+        <div className="container grid grid-cols-3 gap-6 py-5" id="showtimes">
             {renderList()}
         </div>
     );

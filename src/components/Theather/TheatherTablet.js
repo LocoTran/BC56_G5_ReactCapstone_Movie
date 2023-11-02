@@ -120,6 +120,7 @@ export default function TheatherTablet() {
                     items={renderHeThongRap()}
                     tabPosition="top"
                     onChange={onChange}
+                    id="theather"
                 />
             </ConfigProvider>
         </div>
