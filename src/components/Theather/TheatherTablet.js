@@ -80,11 +80,13 @@ export default function TheatherTablet() {
                             <div className="grid grid-cols-2 gap-2">
                                 {phim.lstLichChieuTheoPhim
                                     .slice(0, 6)
-                                    .map((lichChieu) => {
+                                    .map((lichChieu, index) => {
                                         return (
                                             <NavLink
                                                 to={`/detail/${phim.maPhim}`}
+                                                key={index}
                                                 className="rounded bg-red-500 px-2 py-1 text-white"
+                                                key={index}
                                             >
                                                 {moment(
                                                     lichChieu.ngayChieuGioChieu

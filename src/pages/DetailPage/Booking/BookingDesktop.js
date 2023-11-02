@@ -3,9 +3,7 @@ import { ConfigProvider, Tabs } from "antd";
 import moment from "moment/moment";
 import { NavLink, useParams } from "react-router-dom";
 import { movieService } from "../../../services/service";
-const onChange = (key) => {
-    console.log(key);
-};
+const onChange = (key) => {};
 
 export default function BookingDesktop() {
     const [detailBooking, setDetailBooking] = useState([]);
@@ -15,10 +13,6 @@ export default function BookingDesktop() {
         movieService
             .getDetailBooking(id)
             .then((res) => {
-                console.log(
-                    "🚀👾👽 ~ .then ~ res:",
-                    res.data.content.heThongRapChieu
-                );
                 setDetailBooking(res.data.content.heThongRapChieu);
             })
             .catch((err) => {
@@ -32,13 +26,20 @@ export default function BookingDesktop() {
                 key: heThong.maHeThongRap,
                 label: <img className="w-16" src={heThong.logo} alt="" />,
                 children: (
-                    <div>
+                    <div
+                        style={{
+                            maxHeight: 500,
+                            overflowY: "auto",
+                        }}
+                    >
                         {heThong.cumRapChieu.map((cumRap) => {
                             return (
                                 <div key={cumRap.tenCumRap} className="mt-3">
-                                    <p>{cumRap.tenCumRap}</p>
+                                    <p className="font-semibold">
+                                        {cumRap.tenCumRap}
+                                    </p>
                                     <p>{cumRap.diaChi}</p>
-                                    <div className="flex gap-2">
+                                    <div className="flex gap-3">
                                         {cumRap.lichChieuPhim
                                             .slice(0, 6)
                                             .map((lichChieu) => {
@@ -48,7 +49,7 @@ export default function BookingDesktop() {
                                                         key={
                                                             lichChieu.maLichChieu
                                                         }
-                                                        className="inline-block px-2 py-1 rounded bg-red-500 text-white"
+                                                        className="inline-block px-2 py-1 rounded bg-red-500 text-white max-w-[120px]"
                                                     >
                                                         {moment(
                                                             lichChieu.ngayChieuGioChieu

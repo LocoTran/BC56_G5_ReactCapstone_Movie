@@ -46,7 +46,9 @@ export default function Hero() {
 
     return (
         <div>
-            <Carousel autoplay>{renderCarousel()}</Carousel>
+            <Carousel autoplay className="active:border-none">
+                {renderCarousel()}
+            </Carousel>
         </div>
     );
 }

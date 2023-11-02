@@ -14,7 +14,7 @@ export default function HeaderTablet() {
         if (info) {
             return (
                 <>
-                    <span className="inline-block mx-3">{info.hoTen}</span>
+                    <span className="inline-block mx-3">Hi, {info.hoTen}!</span>
                     <button className="btn-theme" onClick={handleLogout}>
                         Đăng xuất
                     </button>
@@ -54,6 +54,26 @@ export default function HeaderTablet() {
                 >
                     CyberCine
                 </span>
+                <div className="flex flex-col items-center gap-2">
+                    <a
+                        href="/#theather"
+                        className="hover:text-red-500 cursor-pointer font-semibold p-2 inline-block"
+                    >
+                        Đặt vé
+                    </a>
+                    <a
+                        href="/#showtimes"
+                        className="hover:text-red-500 cursor-pointer font-semibold p-2 inline-block"
+                    >
+                        Nổi bật
+                    </a>
+                    <a
+                        href="/#footer"
+                        className="hover:text-red-500 cursor-pointer font-semibold p-2 inline-block"
+                    >
+                        Liên hệ
+                    </a>
+                </div>
                 <nav>{renderNav()}</nav>
             </div>
         </div>
