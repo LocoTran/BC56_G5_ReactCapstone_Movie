@@ -40,4 +40,8 @@ export let adminService = {
   addUser: (thongTinNguoiDung) => {
     return https.post(`/api/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
   },
+
+  layDanhSachPhim: () => {
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+  },
 };
