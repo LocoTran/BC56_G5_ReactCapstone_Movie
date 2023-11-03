@@ -14,7 +14,9 @@ export default function HeaderTablet() {
         if (info) {
             return (
                 <>
-                    <span className="inline-block mx-3">Hi, {info.hoTen}!</span>
+                    <span className="inline-block mx-3">
+                        Hi, {info.hoTen} !
+                    </span>
                     <button className="btn-theme" onClick={handleLogout}>
                         Đăng xuất
                     </button>

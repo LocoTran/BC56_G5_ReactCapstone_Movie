@@ -38,7 +38,9 @@ export default function HeaderMobile() {
                             Liên hệ
                         </a>
                     </div>
-                    <span className="inline-block mx-3">Hi, {info.hoTen}!</span>
+                    <span className="inline-block mx-3">
+                        Hi, {info.hoTen} !
+                    </span>
                     <button
                         className="btn-theme"
                         onClick={handleLogout}
