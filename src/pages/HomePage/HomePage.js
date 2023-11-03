@@ -3,7 +3,6 @@ import ListMovie from "./ListMovie/ListMovie";
 import Theather from "../../components/Theather/Theather";
 import Hero from "./Hero";
 import { animateScroll } from "react-scroll";
-import PopupTrailer from "./PopupTrailer/PopupTrailer";
 
 export default function HomePage() {
     return (
@@ -11,7 +10,6 @@ export default function HomePage() {
             <Hero />
             <ListMovie />
             <Theather />
-            <PopupTrailer />
             <span
                 className="absolute bottom-[-6px] right-0 cursor-pointer"
                 onClick={() => {
