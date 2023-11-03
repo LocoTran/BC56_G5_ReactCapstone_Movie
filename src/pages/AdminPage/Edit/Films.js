@@ -3,7 +3,7 @@ import {
   DeleteOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import { Drawer, Form, Input, Table } from "antd";
+import { Drawer, Form, Input, Modal, Table } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { adminService } from "../../../services/service";
@@ -117,7 +117,15 @@ export default function Films() {
             >
               <EditOutlined style={{ color: "blue" }} />{" "}
             </NavLink>
-            <span style={{ cursor: "pointer" }} key={2} className="text-2xl">
+            <span
+              style={{ cursor: "pointer" }}
+              key={2}
+              className="text-2xl"
+              onClick={() => {
+                setFilmDelete(recordItem);
+                setIsOpenModal(true);
+              }}
+            >
               <DeleteOutlined style={{ color: "red" }} />{" "}
             </span>
 
@@ -141,6 +149,25 @@ export default function Films() {
   return (
     <div>
       <Table columns={columns} dataSource={filmArr} rowKey={"maPhim"} />
+      <Modal
+        open={isOpenModal}
+        onOk={async () => {
+          try {
+            await adminService.xoaPhim(filmDelete.maPhim);
+            toast.success("Xóa phim thành công");
+            getFilms();
+          } catch (err) {
+            console.log(err.response.data.content);
+          } finally {
+            setIsOpenModal(false);
+          }
+        }}
+        onCancel={() => {
+          setIsOpenDrawer(false);
+        }}
+      >
+        <p>Xác nhận xóa phim:{filmDelete?.tenPhim}</p>
+      </Modal>
       {filmDetail && (
         <Drawer
           open={isOpenDrawer}
