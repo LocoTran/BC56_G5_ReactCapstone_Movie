@@ -15,7 +15,7 @@ const AdminPage = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   let user = JSON.parse(localStorage.getItem("USER"));
-  if (user.maLoaiNguoiDung == "KhachHang") {
+  if (user?.maLoaiNguoiDung == "KhachHang") {
     window.location.href = "/";
   }
   return (

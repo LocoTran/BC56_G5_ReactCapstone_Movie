@@ -13,7 +13,7 @@ const AddUser = () => {
       matKhau: "",
       email: "",
       soDt: "",
-      maNhom: "GP00",
+      maNhom: "GP14",
       maLoaiNguoiDung: "",
       hoTen: "",
     },
@@ -23,20 +23,20 @@ const AddUser = () => {
       dispatch(action);
     },
     validationSchema: Yup.object({
-      hoTen: Yup.string()
-        .min(2, "Họ tên ít nhất 2 ký tự!")
-        .max(32, "Họ tên nhiều nhất 32 ký tự!")
-        .required("Không được bỏ trống!"),
-      email: Yup.string()
-        .email("Email phải đúng định dạng!")
-        .required("Không được bỏ trống!"),
-      matKhau: Yup.string()
-        .min(6, "Mật khẩu ít nhất 6 ký tự!")
-        .required("Không được bỏ trống!"),
+      // hoTen: Yup.string()
+      //   .min(2, "Họ tên ít nhất 2 ký tự!")
+      //   .max(32, "Họ tên nhiều nhất 32 ký tự!")
+      //   .required("Không được bỏ trống!"),
+      // email: Yup.string()
+      //   .email("Email phải đúng định dạng!")
+      //   .required("Không được bỏ trống!"),
+      // matKhau: Yup.string()
+      // .min(6, "Mật khẩu ít nhất 6 ký tự!")
+      // .required("Không được bỏ trống!"),
       // soDt: Yup.string()
       //   .min(9, "Số điện thoại ít nhất 9 ký tự!")
       //   .max(16, "Số điện thoại nhiều nhất 16 ký tự!")
-      //   .required("Không được bỏ trống!"),
+      // .required("Không được bỏ trống!"),
       taiKhoan: Yup.string()
         .min(2, "Tài khoản ít nhất 2 ký tự!")
         .max(32, "Tài khoản nhiều nhất 32 ký tự!")

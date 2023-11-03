@@ -3,13 +3,22 @@ import {
   DeleteOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import { Table } from "antd";
+import { Drawer, Form, Input, Table } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { adminService } from "../../../services/service";
+import toast from "react-hot-toast";
 
 export default function Films() {
   const [filmArr, setFilmArr] = useState([]);
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const [filmDelete, setFilmDelete] = useState();
+
+  const [filmDetail, setFilmDetail] = useState();
+
+  const [isOpenDrawer, setIsOpenDrawer] = useState();
 
   const getFilms = async () => {
     try {
@@ -84,10 +93,28 @@ export default function Films() {
     {
       title: "Hành động",
       dataIndex: "maPhim",
-      render: (text, film) => {
+      render: (value, recordItem, index, film) => {
         return (
           <Fragment>
-            <NavLink key={1} className=" mr-2  text-2xl">
+            <NavLink
+              key={1}
+              className=" mr-2  text-2xl"
+              onClick={async () => {
+                console.log(recordItem);
+                try {
+                  const res = await adminService.layThongTinPhimEdit(
+                    recordItem.maPhim
+                  );
+                  if (res) {
+                    console.log("💖  onClick={  res:♋", res);
+                    setFilmDetail(res.data.content);
+                    setIsOpenDrawer(true);
+                  }
+                } catch (err) {
+                  console.log(err);
+                }
+              }}
+            >
               <EditOutlined style={{ color: "blue" }} />{" "}
             </NavLink>
             <span style={{ cursor: "pointer" }} key={2} className="text-2xl">
@@ -114,6 +141,42 @@ export default function Films() {
   return (
     <div>
       <Table columns={columns} dataSource={filmArr} rowKey={"maPhim"} />
+      {filmDetail && (
+        <Drawer
+          open={isOpenDrawer}
+          onClose={() => {
+            setIsOpenDrawer(false);
+            setFilmDetail(undefined);
+          }}
+          title="Chỉnh sửa thông tin phim"
+        >
+          <Form
+            onFinish={async (value) => {
+              try {
+                await adminService.capNhatPhimUpload({
+                  ...filmDetail,
+                  ...value,
+                });
+                setIsOpenDrawer(false);
+                setFilmDetail(filmDetail);
+                getFilms();
+                toast.success("Cập Nhật Thành Công");
+              } catch (err) {
+                console.log(err);
+                toast.success("Cập Nhật Thất Bại");
+              }
+            }}
+          >
+            <Form.Item
+              label="Tên Phim"
+              name="tenPhim"
+              initialValue={filmDetail?.tenPhim}
+            >
+              <Input />
+            </Form.Item>
+          </Form>
+        </Drawer>
+      )}
     </div>
   );
 }

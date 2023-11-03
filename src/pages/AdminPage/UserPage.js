@@ -24,7 +24,7 @@ export default function UserPage() {
 
   const getUsers = async () => {
     try {
-      const res = await adminService.getUserList("?maNhom=GP00");
+      const res = await adminService.getUserList("?maNhom=GP14");
       setUserArr(res.data.content);
     } catch (err) {
       console.log(err);
@@ -91,10 +91,12 @@ export default function UserPage() {
           <Fragment>
             <NavLink
               onClick={async () => {
+                console.log("💖  UserPage  recordItem:♋", recordItem);
                 try {
                   const res = await adminService.getUserDetailById(
                     recordItem.taiKhoan
                   );
+
                   if (res) {
                     setUserDetail(res.data.content);
                     setIsOpenDrawer(true);

@@ -11,7 +11,7 @@ export let userService = {
 
 export let movieService = {
   getList: () => {
-    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP14");
   },
   getDetail: (id) => {
     return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
@@ -42,6 +42,15 @@ export let adminService = {
   },
 
   layDanhSachPhim: () => {
-    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01");
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP14");
+  },
+  layThongTinPhimEdit: (maPhim) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
+  },
+  capNhatPhimUpload: (formData) => {
+    return https.post("/api/QuanLyPhim/CapNhatPhimUpload", formData);
+  },
+  xoaPhim: (maPhim) => {
+    return https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
 };
