@@ -1,61 +1,34 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import HeaderDesktop from "./HeaderDesktop";
+import HeaderTablet from "./HeaderTablet";
+import HeaderMobile from "./HeaderMobile";
+
+const Desktop = ({ children }) => {
+    const isDesktop = useMediaQuery({ minWidth: 992 });
+    return isDesktop ? children : null;
+};
+const Tablet = ({ children }) => {
+    const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    return isTablet ? children : null;
+};
+const Mobile = ({ children }) => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    return isMobile ? children : null;
+};
 
 export default function Header() {
-    let navigate = useNavigate();
-    let { info } = useSelector((state) => state.userReducer);
-
-    let handleLogout = () => {
-        window.location.href = "/";
-        localStorage.clear();
-    };
-    let renderNav = () => {
-        if (info) {
-            return (
-                <>
-                    <span className="inline-block mx-3">{info.hoTen}</span>
-                    <button className="btn-theme" onClick={handleLogout}>
-                        Đăng xuất
-                    </button>
-                </>
-            );
-        }
-        return (
-            <>
-                <button
-                    className="btn-theme mx-3"
-                    onClick={() => {
-                        navigate("/login");
-                    }}
-                >
-                    Đăng nhập
-                </button>
-                <button
-                    className="btn-theme-red"
-                    onClick={() => {
-                        navigate("/register");
-                    }}
-                >
-                    Đăng ký
-                </button>
-            </>
-        );
-    };
-
     return (
-        <div className="shadow-lg">
-            <div className="container flex justify-between items-center h-20">
-                <span
-                    className="text-4xl font-semibold text-red-500 cursor-pointer"
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                >
-                    CyberCine
-                </span>
-                <nav>{renderNav()}</nav>
-            </div>
+        <div>
+            <Desktop>
+                <HeaderDesktop />
+            </Desktop>
+            <Tablet>
+                <HeaderTablet />
+            </Tablet>
+            <Mobile>
+                <HeaderMobile />
+            </Mobile>
         </div>
     );
 }

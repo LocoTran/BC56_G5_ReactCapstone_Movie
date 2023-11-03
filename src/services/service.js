@@ -19,4 +19,17 @@ export let movieService = {
     getMovieByTheather: () => {
         return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
     },
+    getDetailBooking: (id) => {
+        return https.get(
+            `/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`
+        );
+    },
+    getToPurchase: (idBooking) => {
+        return https.get(
+            `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+        );
+    },
+    bookingTicket: (ticket) => {
+        return https.post("/api/QuanLyDatVe/DatVe", ticket);
+    },
 };
