@@ -111,7 +111,7 @@ export default function TheatherMobile() {
                 <Tabs
                     centered
                     style={{
-                        height: 500,
+                        height: 550,
                     }}
                     defaultActiveKey="1"
                     items={renderHeThongRap()}

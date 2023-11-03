@@ -13,7 +13,7 @@ export let https = axios.create({
     baseURL: "https://movienew.cybersoft.edu.vn",
     headers: {
         TokenCybersoft: TOKEN_CYBERSOFT,
-        Authorization: `Bearer ` + getAccessToken(),
+        Authorization: "Bearer " + getAccessToken(),
     },
 });
 
