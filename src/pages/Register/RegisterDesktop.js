@@ -40,7 +40,7 @@ const RegisterDesktop = () => {
                 name="register"
                 onFinish={onFinish}
                 style={{
-                    maxWidth: 500,
+                    maxWidth: 600,
                 }}
                 scrollToFirstError
             >
@@ -130,7 +130,7 @@ const RegisterDesktop = () => {
                             message: "Vui lòng nhập số điện thoại!",
                         },
                         {
-                            pattern: /^[0-9]+$/,
+                            type: "number",
                             message: "Vui lòng chỉ nhập số!",
                         },
                     ]}
