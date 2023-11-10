@@ -115,6 +115,9 @@ export default function PurchaseDesktop() {
         );
     };
     let handlePurchase = () => {
+        if (selectChair.length == 0) {
+            return toast.error("Vui lòng chọn ghế trước");
+        }
         let danhSachVe = selectChair.map((ghe) => {
             return {
                 maGhe: ghe.maGhe,
@@ -125,7 +128,6 @@ export default function PurchaseDesktop() {
             maLichChieu: idBooking,
             danhSachVe,
         };
-
         if (userInLocal) {
             movieService
                 .bookingTicket(listVe)
@@ -135,6 +137,7 @@ export default function PurchaseDesktop() {
                     getBookingRoom();
                 })
                 .catch((err) => {
+                    toast.error("Mua vé thất bại!");
                     console.log("🚀👾👽 ~ err:", err);
                 });
         } else {
