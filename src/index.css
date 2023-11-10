@@ -54,7 +54,7 @@ html {
 }
 
 /* CSS cho modal */
-/* .modal {
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -66,15 +66,16 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-  } */
-/*
+  }
+  
   .modal-content {
     padding: 20px;
     border-radius: 5px;
     position: relative;
     width: 100%; /* Tăng kích thước chiều rộng của modal */
-    /* max-width: 1400px; Tăng kích thước chiều rộng tối đa của modal */
-    /* height: 100%; Tăng kích thước chiều cao của modal */
-    /* max-height: 800px; Tăng kích thước chiều cao tối đa của modal */
-    /* text-align: center; */
-  /* } */
+    max-width: 1400px; /* Tăng kích thước chiều rộng tối đa của modal */
+    height: 100%; /* Tăng kích thước chiều cao của modal */
+    max-height: 800px; /* Tăng kích thước chiều cao tối đa của modal */
+    text-align: center;
+  }
+  

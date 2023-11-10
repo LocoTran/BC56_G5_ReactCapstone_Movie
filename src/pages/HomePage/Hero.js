@@ -29,18 +29,6 @@ export default function Hero() {
       });
   }, []);
 
-  useEffect(() => {
-    if (isModalOpen) {
-      document.querySelectorAll(".slick-dots").forEach((dots) => {
-        dots.style.position = "unset";
-      });
-    } else {
-      document.querySelectorAll(".slick-dots").forEach((dots) => {
-        dots.style.position = "absolute";
-      });
-    }
-  }, [isModalOpen]);
-
   let renderCarousel = () => {
     return list.map(({ hinhAnh, maPhim, trailer }) => {
       return (
@@ -72,11 +60,8 @@ export default function Hero() {
     <div>
       <Carousel autoplay>{renderCarousel()}</Carousel>
       {isModalOpen && (
-        <div
-          className="fixed z-10 inset-0 bg-black bg-opacity-80 flex justify-center items-center"
-          onClick={() => setIsModalOpen(false)}
-        >
-          <div className="p-4 rounded-lg relative w-full max-w-2xl h-full max-h-[400px] text-center">
+        <div className="modal" onClick={() => setIsModalOpen(false)}>
+          <div className="modal-content">
             <ReactPlayer
               url={selectedTrailer}
               width="100%" // Tăng kích thước chiều rộng của video
