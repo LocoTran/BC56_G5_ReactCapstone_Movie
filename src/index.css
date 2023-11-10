@@ -52,30 +52,3 @@ html {
 .gheDaDat {
     @apply !cursor-none !bg-gray-800 text-white h-10 w-10 leading-10 text-center rounded-md;
 }
-
-/* CSS cho modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .modal-content {
-    padding: 20px;
-    border-radius: 5px;
-    position: relative;
-    width: 100%; /* Tăng kích thước chiều rộng của modal */
-    max-width: 1400px; /* Tăng kích thước chiều rộng tối đa của modal */
-    height: 100%; /* Tăng kích thước chiều cao của modal */
-    max-height: 800px; /* Tăng kích thước chiều cao tối đa của modal */
-    text-align: center;
-  }
-  
