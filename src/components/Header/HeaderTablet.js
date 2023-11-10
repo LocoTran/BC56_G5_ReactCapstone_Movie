@@ -54,7 +54,7 @@ export default function HeaderTablet() {
                 >
                     CyberCine
                 </span>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col items-center gap-2">
                     <a
                         href="/#theather"
                         className="hover:text-red-500 cursor-pointer font-semibold p-2 inline-block"
