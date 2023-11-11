@@ -53,9 +53,10 @@ export default function Films() {
       message.error("Hình ảnh phải nhỏ hơn 2MB!");
       return false;
     }
-    // Update the selected image state
+    // Cập nhật trạng thái hình ảnh được chọn
+
     setSelectedImage(file);
-    return false; // Prevent default upload behavior
+    return false;
   }
 
   function dummyRequest({ file, onSuccess }) {
@@ -150,7 +151,6 @@ export default function Films() {
                     recordItem.maPhim
                   );
                   if (res) {
-                    console.log("💖  onClick={  res:♋", res);
                     setFilmDetail(res.data.content);
                     setIsOpenDrawer(true);
                   }
@@ -330,7 +330,6 @@ export default function Films() {
             >
               <InputNumber min={1} max={10} />
             </Form.Item>
-            {/* Add other fields as needed */}
             <Form.Item>
               <Button className="bg-black" type="primary" htmlType="submit">
                 Cập Nhật
