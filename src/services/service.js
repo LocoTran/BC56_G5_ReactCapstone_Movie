@@ -19,6 +19,17 @@ export let movieService = {
   getMovieByTheather: () => {
     return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
   },
+  getDetailBooking: (id) => {
+    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
+  },
+  getToPurchase: (idBooking) => {
+    return https.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+    );
+  },
+  bookingTicket: (ticket) => {
+    return https.post("/api/QuanLyDatVe/DatVe", ticket);
+  },
 };
 export let adminService = {
   getUserList: (query = "") => {
@@ -58,19 +69,5 @@ export let adminService = {
   },
   getDetail: (id) => {
     return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
-  },
-  getMovieByTheather: () => {
-    return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
-  },
-  getDetailBooking: (id) => {
-    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
-  },
-  getToPurchase: (idBooking) => {
-    return https.get(
-      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
-    );
-  },
-  bookingTicket: (ticket) => {
-    return https.post("/api/QuanLyDatVe/DatVe", ticket);
   },
 };

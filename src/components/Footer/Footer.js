@@ -1,8 +1,8 @@
-import { useMediaQuery } from "react-responsive";
 import React from "react";
 import FooterLaptop from "./FooterLaptop";
 import FooterTablet from "./FooterTablet";
 import FooterMobile from "./FooterMobile";
+import { useMediaQuery } from "react-responsive";
 
 const Desktop = ({ children }) => {
     const isDesktop = useMediaQuery({ minWidth: 992 });
@@ -15,10 +15,6 @@ const Tablet = ({ children }) => {
 const Mobile = ({ children }) => {
     const isMobile = useMediaQuery({ maxWidth: 767 });
     return isMobile ? children : null;
-};
-const Default = ({ children }) => {
-    const isNotMobile = useMediaQuery({ minWidth: 768 });
-    return isNotMobile ? children : null;
 };
 
 export default function Footer() {
