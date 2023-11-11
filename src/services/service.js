@@ -53,4 +53,24 @@ export let adminService = {
   xoaPhim: (maPhim) => {
     return https.delete(`/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
   },
+  getList: () => {
+    return https.get("/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP14");
+  },
+  getDetail: (id) => {
+    return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
+  },
+  getMovieByTheather: () => {
+    return https.get("/api/QuanLyRap/LayThongTinLichChieuHeThongRap");
+  },
+  getDetailBooking: (id) => {
+    return https.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
+  },
+  getToPurchase: (idBooking) => {
+    return https.get(
+      `/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${idBooking}`
+    );
+  },
+  bookingTicket: (ticket) => {
+    return https.post("/api/QuanLyDatVe/DatVe", ticket);
+  },
 };

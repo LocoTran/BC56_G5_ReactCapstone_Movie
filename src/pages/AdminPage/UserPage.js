@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Modal, Drawer, Form, Input } from "antd";
 import { adminService } from "../../services/service";
-import {
-  DeleteOutlined,
-  EditOutlined,
-  SearchOutlined,
-} from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { NavLink } from "react-router-dom";
 import { Fragment } from "react";
 import toast from "react-hot-toast";
-import Search from "antd/es/input/Search";
 
 export default function UserPage() {
   const [userArr, setUserArr] = useState([]);
@@ -184,6 +179,20 @@ export default function UserPage() {
             }}
           >
             <Form.Item
+              label="Tài Khoản"
+              name="taiKhoan"
+              initialValue={userDetail?.taiKhoan}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Mật Khẩu"
+              name="matKhau"
+              initialValue={userDetail?.matKhau}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
               label="Họ và tên"
               name="hoTen"
               initialValue={userDetail?.hoTen}
@@ -201,6 +210,13 @@ export default function UserPage() {
               label="Số Điện Thoại"
               name="soDT"
               initialValue={userDetail?.soDT}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Loại Người Dùng"
+              name="maLoaiNguoiDung"
+              initialValue={userDetail?.maLoaiNguoiDung}
             >
               <Input />
             </Form.Item>

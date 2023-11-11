@@ -3,11 +3,24 @@ import {
   DeleteOutlined,
   EditOutlined,
 } from "@ant-design/icons";
-import { Drawer, Form, Input, Modal, Table } from "antd";
+import {
+  Button,
+  DatePicker,
+  Drawer,
+  Form,
+  Input,
+  InputNumber,
+  Modal,
+  Switch,
+  Table,
+  Upload,
+  message,
+} from "antd";
 import React, { Fragment, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { adminService } from "../../../services/service";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 export default function Films() {
   const [filmArr, setFilmArr] = useState([]);
@@ -19,6 +32,37 @@ export default function Films() {
   const [filmDetail, setFilmDetail] = useState();
 
   const [isOpenDrawer, setIsOpenDrawer] = useState();
+
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  function normFile(e) {
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  }
+
+  function beforeUpload(file) {
+    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+    if (!isJpgOrPng) {
+      message.error("Chỉ chấp nhận định dạng JPG/PNG!");
+      return false;
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error("Hình ảnh phải nhỏ hơn 2MB!");
+      return false;
+    }
+    // Update the selected image state
+    setSelectedImage(file);
+    return false; // Prevent default upload behavior
+  }
+
+  function dummyRequest({ file, onSuccess }) {
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  }
 
   const getFilms = async () => {
     try {
@@ -183,6 +227,9 @@ export default function Films() {
                 await adminService.capNhatPhimUpload({
                   ...filmDetail,
                   ...value,
+                  hinhAnh: selectedImage
+                    ? URL.createObjectURL(selectedImage)
+                    : filmDetail?.hinhAnh,
                 });
                 setIsOpenDrawer(false);
                 setFilmDetail(filmDetail);
@@ -190,7 +237,7 @@ export default function Films() {
                 toast.success("Cập Nhật Thành Công");
               } catch (err) {
                 console.log(err);
-                toast.success("Cập Nhật Thất Bại");
+                toast.error("Cập Nhật Thất Bại");
               }
             }}
           >
@@ -200,6 +247,94 @@ export default function Films() {
               initialValue={filmDetail?.tenPhim}
             >
               <Input />
+            </Form.Item>
+            <Form.Item
+              label="Hình Ảnh"
+              name="hinhAnh"
+              valuePropName="fileList"
+              initialValue={
+                filmDetail?.hinhAnh
+                  ? [
+                      {
+                        uid: "-1",
+                        name: "image.png",
+                        status: "done",
+                        url: filmDetail.hinhAnh,
+                      },
+                    ]
+                  : []
+              }
+              getValueFromEvent={normFile}
+            >
+              <Upload
+                name="avatar"
+                listType="picture-card"
+                className="avatar-uploader"
+                showUploadList={false}
+                beforeUpload={beforeUpload}
+                customRequest={dummyRequest}
+              >
+                {selectedImage ? (
+                  <img
+                    src={URL.createObjectURL(selectedImage)}
+                    alt="avatar"
+                    style={{ width: "100%" }}
+                  />
+                ) : filmDetail?.hinhAnh ? (
+                  <img
+                    src={filmDetail.hinhAnh}
+                    alt="avatar"
+                    style={{ width: "100%" }}
+                  />
+                ) : (
+                  <div>
+                    <div style={{ marginTop: 8 }}>Tải lên</div>
+                  </div>
+                )}
+              </Upload>
+            </Form.Item>
+            <Form.Item
+              label="Mô Tả"
+              name="moTa"
+              initialValue={filmDetail?.moTa}
+            >
+              <Input.TextArea />
+            </Form.Item>
+            <Form.Item
+              label="Đang Chiếu"
+              name="dangChieu"
+              valuePropName="checked"
+              initialValue={filmDetail?.dangChieu}
+            >
+              <Switch />
+            </Form.Item>
+            <Form.Item
+              label="Sắp Chiếu"
+              name="sapChieu"
+              valuePropName="checked"
+              initialValue={filmDetail?.sapChieu}
+            >
+              <Switch />
+            </Form.Item>
+            <Form.Item
+              label="Ngày Chiếu"
+              name="ngayKhoiChieu"
+              initialValue={moment(filmDetail?.ngayKhoiChieu)}
+            >
+              <DatePicker format="DD-MM-YYYY" />
+            </Form.Item>
+            <Form.Item
+              label="Đánh Giá"
+              name="danhGia"
+              initialValue={filmDetail?.danhGia}
+            >
+              <InputNumber min={1} max={10} />
+            </Form.Item>
+            {/* Add other fields as needed */}
+            <Form.Item>
+              <Button className="bg-black" type="primary" htmlType="submit">
+                Cập Nhật
+              </Button>
             </Form.Item>
           </Form>
         </Drawer>
