@@ -184,6 +184,7 @@ export default function Films() {
                     recordItem.maPhim
                   );
                   if (res) {
+                    console.log("💖  onClick={  res:♋", res);
                     setFilmDetail(res.data.content);
                     setIsOpenDrawer(true);
                   }
@@ -206,15 +207,16 @@ export default function Films() {
               <DeleteOutlined style={{ color: "red" }} />{" "}
             </span>
 
-            <NavLink
+            {/* <NavLink
               key={3}
               className=" mr-2 text-2xl"
+              // to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}
               onClick={() => {
                 localStorage.setItem("filmParams", JSON.stringify(film));
               }}
             >
               <CalendarOutlined style={{ color: "green" }} />{" "}
-            </NavLink>
+            </NavLink> */}
           </Fragment>
         );
       },
@@ -240,7 +242,7 @@ export default function Films() {
           }
         }}
         onCancel={() => {
-          setIsOpenDrawer(false);
+          setIsOpenModal(false);
         }}
       >
         <p>Xác nhận xóa phim:{filmDelete?.tenPhim}</p>
