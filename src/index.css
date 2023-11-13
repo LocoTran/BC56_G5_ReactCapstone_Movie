@@ -52,3 +52,7 @@ html {
 .gheDaDat {
     @apply !cursor-none !bg-gray-800 text-white h-10 w-10 leading-10 text-center rounded-md;
 }
+
+.ant-btn.ant-btn-primary {
+    background-color: black; 
+}
