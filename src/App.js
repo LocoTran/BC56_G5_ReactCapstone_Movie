@@ -13,6 +13,7 @@ import UserPage from "./pages/AdminPage/UserPage";
 import Films from "./pages/AdminPage/Edit/Films";
 import AddUser from "./pages/AdminPage/AddUser";
 import AdminPage from "./pages/AdminPage/AdminPage";
+import AddNew from "./pages/AdminPage/AddNew";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
           <Route path="/admin" element={<AdminPage />}>
             <Route path="users" element={<UserPage />}></Route>
             <Route path="films" element={<Films />}></Route>
+            <Route path="films/addnew" element={<AddNew />}></Route>
             <Route path="users/adduser" element={<AddUser />}></Route>
           </Route>
           {/*  */}

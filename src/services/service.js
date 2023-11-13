@@ -70,4 +70,7 @@ export let adminService = {
   getDetail: (id) => {
     return https.get(`/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`);
   },
+  themPhimUploadHinh: (formData) => {
+    return https.post(`/api/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  },
 };

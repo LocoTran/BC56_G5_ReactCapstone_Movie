@@ -35,6 +35,39 @@ export default function Films() {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
+  const handleSubmit = async (values) => {
+    try {
+      let maNhom = "GP14";
+      const {
+        maPhim,
+        tenPhim,
+        moTa,
+        ngayKhoiChieu,
+        sapChieu,
+        dangChieu,
+        // hot,
+        danhGia,
+        hinhAnh,
+      } = values;
+
+      let formData = new FormData();
+      formData.append("maPhim", maPhim);
+      formData.append("tenPhim", tenPhim);
+      formData.append("moTa", moTa);
+      formData.append("ngayKhoiChieu", ngayKhoiChieu);
+      formData.append("sapChieu", sapChieu);
+      formData.append("dangChieu", dangChieu);
+      formData.append("maNhom", maNhom);
+      // formData.append("hot", hot);
+      formData.append("danhGia", danhGia);
+      formData.append("File", hinhAnh);
+
+      await adminService.capNhatPhimUpload(formData);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   function normFile(e) {
     if (Array.isArray(e)) {
       return e;
@@ -221,26 +254,14 @@ export default function Films() {
           }}
           title="Chỉnh sửa thông tin phim"
         >
-          <Form
-            onFinish={async (value) => {
-              try {
-                await adminService.capNhatPhimUpload({
-                  ...filmDetail,
-                  ...value,
-                  hinhAnh: selectedImage
-                    ? URL.createObjectURL(selectedImage)
-                    : filmDetail?.hinhAnh,
-                });
-                setIsOpenDrawer(false);
-                setFilmDetail(filmDetail);
-                getFilms();
-                toast.success("Cập Nhật Thành Công");
-              } catch (err) {
-                console.log(err);
-                toast.error("Cập Nhật Thất Bại");
-              }
-            }}
-          >
+          <Form onFinish={handleSubmit}>
+            <Form.Item
+              label="Mã Phim"
+              name="maPhim"
+              initialValue={filmDetail?.maPhim}
+            >
+              <Input hidden />
+            </Form.Item>
             <Form.Item
               label="Tên Phim"
               name="tenPhim"
@@ -331,7 +352,12 @@ export default function Films() {
               <InputNumber min={1} max={10} />
             </Form.Item>
             <Form.Item>
-              <Button className="bg-black" type="primary" htmlType="submit">
+              <Button
+                onClick={() => {}}
+                className="bg-black"
+                type="primary"
+                htmlType="submit"
+              >
                 Cập Nhật
               </Button>
             </Form.Item>
